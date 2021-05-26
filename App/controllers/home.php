@@ -1,11 +1,12 @@
 <?php
 
 class Home extends \App\Core\Controller{
-    public function index($nome = ''){
-       $user = $this->model('User');
-       $user->nome = $nome;
+    public function index(){
+      
+        $note = $this->model('Note');
+        $dados = $note->getAll();
       
 
-       $this->view('home/index',  ['nome' => $user->nome]);
+       $this->view('home/index',  $dados);
     }
 }
