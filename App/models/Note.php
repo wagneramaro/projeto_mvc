@@ -1,6 +1,10 @@
 <?php 
 use App\Core\Model;
 class Note extends Model {
+
+    public $titulo;
+    public $texto;
+
     public function getAll(){
         $sql = "SELECT * FROM notes";
         $stmt = Model::getConn()->prepare($sql);
@@ -29,4 +33,19 @@ class Note extends Model {
         endif;
 
     }
+
+    public function save(){
+        $sql = "INSERT INTO notes (titulo, texto) VALUES (?, ?)";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, $this->titulo);
+        $stmt->bindValue(2, $this->texto);
+
+        if($stmt->execute()){
+            return "Cadastrado com sucesso!";
+        } else {
+            return "Erro ao cadastrar";
+        }
+    }
+
+
 }
