@@ -7,6 +7,6 @@ class Home extends \App\Core\Controller{
         $dados = $note->getAll();
       
 
-       $this->view('home/index',  $dados);
+       $this->view('home/index',  $dados = ['registros' => $dados]);
     }
 }

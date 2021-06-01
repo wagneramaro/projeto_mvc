@@ -47,5 +47,16 @@ class Note extends Model {
         }
     }
 
+    public function delete($id){
+        $sql = 'DELETE FROM notes WHERE id = ?';
+        $stmt = Model::getConn()->prepare($sql);
+       $stmt->bindValue(1 , $id);
+        if($stmt->execute()){
+            return "<br>Excluido com sucesso!";
+        } else {
+            return "<br>Erro ao excluir";
+        }
+    }
+
 
 }

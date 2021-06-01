@@ -25,4 +25,17 @@ class Notes extends \App\Core\Controller{
         $this->view('notes/criar', $dados = ['mensagem' => $mensagem]);
     }
 
+    public function excluir($id = ''){
+
+        $mensagem = array();
+
+        $note = $this->model('Note');
+        $mensagem[] = $note->delete($id);
+
+        $dados = $note->getAll();
+
+        $this->view('home/index', $dados = ['registros'=> $dados, 'mensagem' => $mensagem]);
+
+    }
+
 }
