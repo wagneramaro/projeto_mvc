@@ -33,6 +33,22 @@ class Notes extends \App\Core\Controller{
         $this->view('notes/criar', $dados = ['mensagem' => $mensagem]);
     }
 
+    public function editar($id){
+        $mensagem = array();
+        $note = $this->model('Note');
+        if(isset($_POST['atualizar'])):
+            
+            $note->titulo = $_POST['titulo'];
+            $note->texto = $_POST['texto'];
+            $mensagem[] = $note->update($id);
+        endif;
+        
+        $dados = $note->findId($id);
+
+        $this->view('notes/editar', $dados = ['mensagem' => $mensagem, 'registros' => $dados]);
+
+    }
+
     public function excluir($id = ''){
 
         $mensagem = array();
@@ -45,5 +61,7 @@ class Notes extends \App\Core\Controller{
         $this->view('home/index', $dados = ['registros'=> $dados, 'mensagem' => $mensagem]);
 
     }
+
+    
 
 }
