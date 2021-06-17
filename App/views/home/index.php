@@ -9,6 +9,6 @@ foreach ($data['registros'] as $note): ?>
 
 <h3><a href="/notes/ver/<?php echo $note['id']; ?>"> <?php echo $note['titulo']; ?></a></h3>
 <?php if(isset($_SESSION['logado'])): ?>
-<a href="/notes/editar/<?php echo $note['id']; ?>">Editar</a> | <a href="/notes/excluir/<?php echo $note['id']; ?>">Excluír</a>
+<a href="/notes/editar/<?php echo $note['id']; ?>" class="btn orange">Editar</a> <a href="/notes/excluir/<?php echo $note['id']; ?>" class="btn red">Excluír</a>
 <?php endif; ?>
 <?php endforeach; ?>

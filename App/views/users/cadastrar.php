@@ -14,6 +14,6 @@ endif;
 Nome: <input type="text" name="nome">
 E-mail: <input type="email" name="email" id="">
 Senha: <input type="password" name="senha">
-<input type="submit" name="cadastrar" value="Cadastrar">
+<input type="submit" name="cadastrar" value="Cadastrar" class="btn">
 
 </form>

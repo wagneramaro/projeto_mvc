@@ -10,5 +10,5 @@ endif;
 <form action="/home/login" method="POST">
 E-mail: <input type="text" name="email" id=""><br>
 Senha: <input type="password" name="senha"><br>
-<button name="entrar">Entrar</button>
+<button name="entrar" class="btn">Entrar</button>
 </form>

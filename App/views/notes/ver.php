@@ -1,3 +1,3 @@
-<button onclick="window.location.href = '/'">Voltar</button>
-<h1><?php echo $data['titulo']; ?></h1>
+<h2><?php echo $data['titulo']; ?></h2>
+<br><button onclick="window.location.href = '/'" class="btn">Voltar</button>
 <p><?php echo nl2br($data['texto']); ?></p>

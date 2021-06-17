@@ -12,5 +12,5 @@ endif;
 <input type="text" name="titulo" placeholder="Titulo"/><br/>
 <textarea name="texto" id="" cols="30" rows="10" placeholder="Texto"></textarea><br>
 
-<input type="submit" value="Gravar" name="cadastrar">
+<input type="submit" value="Gravar" name="cadastrar" class="btn">
 </form>
