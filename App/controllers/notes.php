@@ -1,5 +1,7 @@
 <?php
 
+use App\Auth;
+
 class Notes extends \App\Core\Controller{
     
     public function ver($id = ''){
@@ -12,6 +14,8 @@ class Notes extends \App\Core\Controller{
     }
 
     public function criar(){
+
+        Auth::CheckLogin();
 
         $mensagem = array();
         if(isset($_POST['cadastrar'])){
@@ -34,6 +38,8 @@ class Notes extends \App\Core\Controller{
     }
 
     public function editar($id){
+
+        Auth::CheckLogin();
         $mensagem = array();
         $note = $this->model('Note');
         if(isset($_POST['atualizar'])):
@@ -50,6 +56,8 @@ class Notes extends \App\Core\Controller{
     }
 
     public function excluir($id = ''){
+
+        Auth::CheckLogin();
 
         $mensagem = array();
 
