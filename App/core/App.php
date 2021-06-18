@@ -17,6 +17,10 @@ class App{
         if(file_exists('../App/controllers/'.$url[1].'.php')):
             $this->controller = $url[1];
             unset($url[1]);
+        elseif(empty($url[1])):
+            $this->controller = 'home';
+        else:
+            $this->controller = 'erro404';
         endif;
 
         require_once '../App/controllers/'.$this->controller.'.php';
