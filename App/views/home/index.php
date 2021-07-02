@@ -25,10 +25,20 @@ if(empty($paginacao->resultado())):
 endif;
 
 foreach ($paginacao->resultado() as $note): ?>
-<img src="<?php echo URL_BASE; ?>/upload/<?php echo $note['imagem']; ?>" alt="imagem" />
-<h3><a href="/notes/ver/<?php echo $note['id']; ?>"> <?php echo $note['titulo']; ?></a></h3>
+<div class="col s12">
+  <div class="col s12 m4">
+    <img class="responsive-img" src="<?php echo URL_BASE; ?>/upload/<?php echo $note['imagem']; ?>" alt="imagem" />
+  </div>
+  <div class="col s12 m8">
+  <h3 class="light"><a href="/notes/ver/<?php echo $note['id']; ?>"> <?php echo $note['titulo']; ?></a></h3>
 <?php if(isset($_SESSION['logado'])): ?>
 <a href="/notes/editar/<?php echo $note['id']; ?>" class="btn orange">Editar</a> <a href="/notes/excluir/<?php echo $note['id']; ?>" class="btn red">Excluír</a>
 <?php endif; ?>
+  </div>
+
+
+</div>
+
+
 <?php endforeach; ?>
 <?php $paginacao->navigator(); ?>

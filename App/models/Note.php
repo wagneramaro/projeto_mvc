@@ -64,12 +64,8 @@ class Note extends Model {
 
     public function delete($id){
 
-        $sql = "SELECT imagem FROM notes WHERE id = ?";
-        $stmt = Model::getConn()->prepare($sql);
-        $stmt->bindValue(1, $id);
-        $stmt->execute();
-
-        $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $resultado = $this->findId($id);
+        
         if(!empty($resultado['imagem'])):
             unlink("upload/".$resultado['imagem']);
         endif;

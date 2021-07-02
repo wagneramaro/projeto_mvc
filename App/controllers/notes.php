@@ -39,7 +39,7 @@ class Notes extends \App\Core\Controller{
                 // MimeType List => http://www.iana.org/assignments/media-types/media-types.xhtml
                 $file->addValidations(array(
                     // Ensure file is of type "image/png"
-                    new \Upload\Validation\Mimetype('image/png', 'jpeg'),
+                    new \Upload\Validation\Mimetype(array('image/png', 'image/jpeg')),
 
                     //You can also add multi mimetype validation
                     //new \Upload\Validation\Mimetype(array('image/png', 'image/gif'))
@@ -73,6 +73,7 @@ class Notes extends \App\Core\Controller{
                     // Fail!
                     $errors = $file->getErrors();
                     $mensagem[] = implode("<br>", $errors);
+                    $mensagem[] .= $data['mime'];
                 } 
                 //fim upload
 
