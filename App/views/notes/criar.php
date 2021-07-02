@@ -7,10 +7,11 @@ if(!empty($data['mensagem'])):
 endif;
 ?>
 
-<form action="/notes/criar" method="post">
+<form action="/notes/criar" method="post" enctype="multipart/form-data" >
 
-<input type="text" name="titulo" placeholder="Titulo"/><br/>
-<textarea name="texto" id="" cols="30" rows="10" placeholder="Texto"></textarea><br>
+<input type="text" name="titulo" placeholder="Titulo" required/><br/>
+<textarea name="texto" id="" cols="30" rows="10" required placeholder="Texto"></textarea><br>
+<input type="file" name="foo" value="" required /><br>
 
 <input type="submit" value="Gravar" name="cadastrar" class="btn">
 </form>

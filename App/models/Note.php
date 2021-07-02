@@ -4,6 +4,7 @@ class Note extends Model {
 
     public $titulo;
     public $texto;
+    public $imagem;
 
     public function getAll(){
         $sql = "SELECT * FROM notes";
@@ -35,10 +36,11 @@ class Note extends Model {
     }
 
     public function save(){
-        $sql = "INSERT INTO notes (titulo, texto) VALUES (?, ?)";
+        $sql = "INSERT INTO notes (titulo, texto, imagem) VALUES (?, ?, ?)";
         $stmt = Model::getConn()->prepare($sql);
         $stmt->bindValue(1, $this->titulo);
         $stmt->bindValue(2, $this->texto);
+        $stmt->bindValue(3, $this->imagem);
 
         if($stmt->execute()){
             return "Cadastrado com sucesso!";
@@ -61,6 +63,18 @@ class Note extends Model {
     }
 
     public function delete($id){
+
+        $sql = "SELECT imagem FROM notes WHERE id = ?";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if(!empty($resultado['imagem'])):
+            unlink("uploads/".$resultado['imagem']);
+        endif;
+
+
         $sql = 'DELETE FROM notes WHERE id = ?';
         $stmt = Model::getConn()->prepare($sql);
        $stmt->bindValue(1 , $id);
