@@ -71,7 +71,7 @@ class Note extends Model {
 
         $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
         if(!empty($resultado['imagem'])):
-            unlink("uploads/".$resultado['imagem']);
+            unlink("upload/".$resultado['imagem']);
         endif;
 
 
