@@ -7,7 +7,7 @@ class Note extends Model {
     public $imagem;
 
     public function getAll(){
-        $sql = "SELECT * FROM notes";
+        $sql = "SELECT notes.id, notes.titulo, notes.texto, notes.imagem, users.nome FROM notes INNER JOIN users ON notes.id_user = users.id";
         $stmt = Model::getConn()->prepare($sql);
         $stmt->execute();
 
@@ -56,9 +56,35 @@ class Note extends Model {
         $stmt->bindValue(2, $this->texto);
         $stmt->bindValue(3, $id);
         if($stmt->execute()){
+            return "M.toast({html: 'Atualizado com sucesso!', classes: 'rounded, green'});";
+        } else {
+            return "M.toast({html: 'Falha ao atualizar!', classes: 'rounded, red'});";
+        }
+    }
+
+    public function updateImagem($id){
+        $sql = "UPDATE notes SET titulo = ?, texto = ?, imagem = ? WHERE id = ?";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, $this->titulo);
+        $stmt->bindValue(2, $this->texto);
+        $stmt->bindValue(3, $this->imagem);
+        $stmt->bindValue(4, $id);
+        if($stmt->execute()){
             return "Atualizado com sucesso!";
         } else {
             return "Erro ao atualizar";
+        }
+    }
+
+    public function deleteImage($id){
+        $sql = "UPDATE notes SET imagem = ? WHERE id = ?";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, "");
+        $stmt->bindValue(2, $id);
+        if($stmt->execute()){
+            return "Imagem excluida com sucesso!";
+        } else {
+            return "Erro ao apagar imagem";
         }
     }
 

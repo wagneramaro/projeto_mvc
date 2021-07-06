@@ -6,6 +6,7 @@ class Users extends Controller{
     public function cadastrar(){
         $mensagem = array();
         Auth::CheckLogin();
+        Auth::CheckLoginAdmin();
         if(isset($_POST['cadastrar'])):
             $nome = $_POST['nome'];
             $email = $_POST['email'];
